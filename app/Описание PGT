@@ -1,0 +1,113 @@
+Project Description: Travel Diary Application
+Overview
+The Travel Diary application is a simple web-based platform integrated with a Telegram bot that allows users to record their travel experiences. The core functionality focuses on creating personal travel entries with geolocation and sharing them with other users. The application adheres to the requirements of the task while maintaining simplicity and scalability.
+
+Core Features
+User Authentication via Telegram Bot
+Users must authenticate through their Telegram account.
+Upon authentication, the user gains access to the application's main functionalities.
+Create Travel Entries
+Each entry includes the following mandatory fields:
+Location (Geoposition) : Users can either send their current location or select a place on the map using Yandex Map API.
+Image Upload : Users can attach one image representing the place they visited.
+Category Selection : Users choose from two predefined categories:
+Cultural Heritage : For historical or culturally significant places.
+Place to Visit : For popular tourist spots or recommended locations.
+Optional field: A short text description or title for the entry.
+View Other Users' Travel Entries
+Users can browse entries created by others in two formats:
+Map View : All entries are displayed as points on a map (using Yandex Map API).
+Feed View : Entries appear in a chronological list format with basic details (location name, image, category).
+Data Storage
+All user data (entries, images, locations) will be stored securely in a database.
+Each entry should have the following structure:
+json
+Copy
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+⌄
+⌄
+{
+  "user_id": "TelegramUserID",
+  "entry_id": "UniqueEntryID",
+  "location": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "address": "OptionalAddress"
+  },
+  "image_url": "URLofUploadedImage",
+  "category": "CulturalHeritage/PlaceToVisit",
+  "description": "OptionalDescriptionText",
+  "created_at": "TimestampOfCreation"
+}
+Technical Requirements
+Frontend
+Telegram Integration : Use the Telegram Bot API for user interaction.
+Yandex Map API : For displaying maps and allowing users to select or mark locations.
+Simple Interface : Design a clean and intuitive interface within the Telegram app for creating and viewing entries.
+Backend
+Database : Choose a lightweight database system such as PostgreSQL or MongoDB to store user data and travel entries.
+API Endpoints : Develop RESTful APIs for handling CRUD operations related to travel entries. Example endpoints:
+POST /create-entry: Create a new travel entry.
+GET /view-entries: Retrieve all public travel entries.
+GET /view-entry/:id: Retrieve a specific travel entry by ID.
+File Storage
+Store uploaded images in a cloud storage service like AWS S3 or Google Cloud Storage. Ensure proper security measures to protect user-uploaded content.
+User Flow
+Authentication
+User starts a conversation with the Telegram bot.
+Bot requests permission to link the user's Telegram account.
+Upon successful authentication, the user is granted access to the application.
+Creating a Travel Entry
+User selects the "Create Entry" option from the bot menu.
+Bot prompts the user to share their current location or search for a location on the map.
+After selecting the location, the bot asks the user to upload an image and choose a category (Cultural Heritage or Place to Visit).
+Optionally, the user can add a short description.
+Once all required fields are filled, the entry is saved in the database.
+Viewing Entries
+User selects the "View Entries" option from the bot menu.
+Bot displays two options: "Map View" or "Feed View."
+In Map View, users see all entries as pins on the map. Clicking on a pin shows detailed information about the entry.
+In Feed View, users see a scrollable list of entries with thumbnails, location names, and categories.
+Error Handling and Validation
+Input Validation
+Validate all inputs (location, image, category) before saving them to the database.
+Provide clear error messages if validation fails.
+Error Messages
+If the user sends invalid input (e.g., no image uploaded), display a friendly message asking them to try again.
+Handle server-side errors gracefully and inform the user if something goes wrong.
+Scalability Considerations
+Future Enhancements
+Allow users to edit or delete their own entries.
+Introduce social features like liking or commenting on entries.
+Add filters for viewing entries based on categories, dates, or proximity.
+Performance Optimization
+Optimize image uploads and storage to ensure fast loading times.
+Cache frequently accessed data to improve response times.
+Detailed Steps for Implementation
+Step 1: Set Up Telegram Bot
+Register a new bot with the Telegram BotFather.
+Obtain the bot token and configure it to handle incoming messages and commands.
+Step 2: Integrate Yandex Map API
+Sign up for a Yandex Map API key.
+Use the API to enable location selection and map rendering.
+Step 3: Develop Backend Logic
+Set up the database schema for storing user entries.
+Implement API endpoints for creating, retrieving, and managing entries.
+Step 4: Build Frontend Interaction
+Design a conversational flow for the Telegram bot.
+Allow users to interact with the bot using buttons, menus, and inline keyboards.
+Step 5: Test and Deploy
+Conduct thorough testing to ensure all features work as expected.
+Deploy the application to a hosting platform (e.g., Heroku, AWS).

@@ -1,0 +1,39 @@
+# Byte-compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# Docker files
+docker-compose.yml
+.dockerenv
+/Dockerfile
+
+# IDE files (например, для VS Code)
+.vscode/
+*.code-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*~
+.temp
+.cache
+
+# Dependency files (если не хотите хранить зависимости в репозитории)
+# requirements.txt (удалите эту строку, если вы хотите сохранить requirements.txt)
+
+# Database files
+travel_diary_db/
+
+# Local configuration files
+*.env
